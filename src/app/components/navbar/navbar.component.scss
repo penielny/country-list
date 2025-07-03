@@ -1,0 +1,35 @@
+.nav-wrapper {
+    min-height: 5rem;
+    border-bottom: 1px solid #9797972e;
+    box-shadow: 0 2px 8px 0 rgba(200, 200, 200, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 5vw, 5rem);
+
+    a{
+        text-decoration: none;
+        color: black;
+        h1 {
+            font-size: 1.5rem;
+        }
+    }
+
+    button {
+        background-color: transparent;
+
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.125rem;
+
+        svg {
+            height: 1.25rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+}

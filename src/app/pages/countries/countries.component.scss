@@ -1,0 +1,124 @@
+@use "query" as *;
+
+.countries-wrapper {
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 clamp(1rem, 5vw, 5rem);
+    padding-top: 3rem;
+
+    .filter-bar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        @include mobile {
+            flex-direction: column;
+            align-items: start;
+            gap: 2.5rem;
+        }
+
+        justify-content: space-between;
+
+        .search-container {
+            border: 1px solid rgba(211, 211, 211, 0.348);
+            border-radius: 0.313rem;
+            outline: none;
+            overflow: hidden;
+            width: 30rem;
+
+            @include mobile {
+                width: 83.5%;
+            }
+
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 1.188rem 2rem;
+            gap: 1.5rem;
+
+            svg {
+                height: 1.125rem;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                flex: 1;
+                background-color: transparent;
+            }
+        }
+
+        .select-option {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+
+            button {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    height: 1rem;
+                }
+            }
+        }
+
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 4.688rem;
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+
+        @include tablet {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .country-card {
+            overflow: hidden;
+            background-color: white;
+            text-decoration: none;
+            border-radius: 0.313rem;
+            overflow: hidden;
+
+            img {
+                height: 10rem;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .info {
+
+                padding: 0 1.5rem;
+                padding-top: 1.5rem;
+                padding-bottom: 3rem;
+                display: flex;
+                flex-direction: column;
+                color: #111517;
+                gap: 1rem;
+
+                .name {
+                    font-size: 1.125rem;
+                    font-weight: bolder;
+                }
+
+                .extra {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 0.875rem;
+                }
+            }
+        }
+    }
+
+
+
+}

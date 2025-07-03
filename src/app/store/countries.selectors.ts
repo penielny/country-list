@@ -18,3 +18,8 @@ export const selectSearchCountry = createSelector(
   (state) => state.country
 );
 
+export const selectTheme = createSelector(
+  selectCountryState,
+  (state) => state.isDark
+);
+

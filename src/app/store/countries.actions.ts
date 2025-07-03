@@ -15,6 +15,11 @@ export const searchCountries = createAction("[Country] Search Countries",
     props<{ query: string }>()
 )
 
+
 export const searchCountriesSuccess = createAction("[Country] Search Countries Success",
     props<{ country: CountryInfo }>()
+)
+
+export const toggleTheme = createAction("[Country] Toggle Theme",
+    props<{ theme: boolean }>()
 )

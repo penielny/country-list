@@ -1,10 +1,39 @@
 <div class="countries-wrapper">
-    @for (country of countries; track $index) {
-    <a (click)="setSearchTerm(country.name.common)" [routerLink]="'/country/' + country.name.common">
-        <img [src]="country.flags.png" />
-        <p>{{country.name.common}}</p>
-        <p>{{country.capital}}</p>
-        <p>{{country.population}}</p>
-    </a>
-    }
+    <section class="filter-bar">
+        <div class="search-container">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+
+            <input [(ngModel)]="searchTerm" (input)="onInput()" placeholder="Search for a country…" />
+        </div>
+
+        <mat-form-field hideRequiredMarker appearance="outline">
+            <!-- <mat-label>Filter by Region</mat-label> -->
+            <mat-select (selectionChange)="filterByRegion($event.value)" [(value)]="selectedRegion" hideRequiredMarker>
+                <mat-option value="">Filter by Region</mat-option>
+                @for (state of countriesService.regions; track state) {
+                <mat-option [value]="state">{{state}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+    </section>
+    <section class="list">
+        @for (country of countries; track $index) {
+        <a class="country-card" (click)="setSearchTerm(country.cca3)" [routerLink]="'/country/' + country.cca3">
+            <img [src]="country.flags.png" />
+            <div class="info">
+                <p class="name">{{country.name.common}}</p>
+                <div class="extra">
+                    <p><strong>Population:</strong> {{country.population}}</p>
+                    <p><strong>Region:</strong> {{country.capital}}</p>
+                    <p><strong>Capital:</strong> {{country.region}}</p>
+                </div>
+            </div>
+        </a>
+        }
+    </section>
 </div>

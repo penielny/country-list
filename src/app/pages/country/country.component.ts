@@ -3,10 +3,11 @@ import { CountryInfo } from '../../../model/country';
 import { Subscription } from 'rxjs';
 import { CountryService } from '../../services/countries.service';
 import { Location } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-country',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './country.component.html',
   styleUrl: './country.component.scss'
 })
@@ -14,7 +15,7 @@ export class CountryComponent {
   country: CountryInfo | null = null;
   subscription: Subscription = new Subscription()
 
-  constructor(private countriesService: CountryService,private location: Location) {
+  constructor(private countriesService: CountryService, private location: Location) {
     this.subscription.add(this.countriesService.country$.subscribe({
       next: (value) => {
         this.country = value;
@@ -22,8 +23,12 @@ export class CountryComponent {
     }))
   }
 
-  goBack(){
-   this.location.back();
+  goBack() {
+    this.location.back();
+  }
+
+  setSearchTerm(term: string) {
+    this.countriesService.searchCountry(term)
   }
 
   get languages() {

@@ -1,31 +1,54 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
 html {
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
-}/* You can add global styles to this file, and also import other style files */
-*{
-    margin: 0;
-    padding: 0;
+  @include mat.theme((color: (theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
 }
-button {
-    cursor: pointer;
+
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-    width: 100dvw;
+
+
+:root {
+  --bg-color: #F2F2F2;
+  --element-bg: #FFFFFF;
+  --text-color: #111517;
+  --input-color: #fff;
+  --header-text-color: #111517;
+  --shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+[data-theme='dark'] {
+  --bg-color: #202C36;
+  --element-bg: #2B3844;
+  --input-color: #2B3844;
+  --text-color: #fff;
+  --header-text-color: #fff;
+  --shadow: 0 2px 9px rgba(0, 0, 0, 0.3)
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto,
+    "Helvetica Neue", sans-serif;
+    background-color: var(--bg-color);
+}
 
 
 .mat-mdc-form-field-subscript-wrapper {

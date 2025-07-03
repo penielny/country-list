@@ -1,3 +1,5 @@
+@use 'query' as *;
+
 .nav-wrapper {
     min-height: 5rem;
     border-bottom: 1px solid #9797972e;
@@ -6,23 +8,32 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 clamp(1rem, 5vw, 5rem);
+    background-color: var(--element-bg);
 
-    a{
+
+    a {
         text-decoration: none;
-        color: black;
+        color: var(--text-color);
+        ;
+
         h1 {
             font-size: 1.5rem;
+
+            @include mobile {
+                font-size: 14px
+            }
         }
     }
 
     button {
         background-color: transparent;
-
+        cursor: pointer;
         border: none;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.125rem;
+        color: var(--text-color);
 
         svg {
             height: 1.25rem;

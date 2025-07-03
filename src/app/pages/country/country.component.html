@@ -30,7 +30,7 @@
                 <ul>
                     @for (border of country?.full_borders; track $index) {
                     <li>
-                        <a href="">{{border.name.common}}</a>
+                        <a (click)="setSearchTerm(border.cca3)" [routerLink]="'/country/'+border.cca3">{{border.name.common}}</a>
                     </li>
                     }
                 </ul>

@@ -16,6 +16,7 @@ export class NavbarComponent implements OnDestroy {
   constructor(private countryService: CountryService) {
     this.subscription = this.countryService.isDarkMode$.subscribe({
       next: (value) => {
+        document.body.setAttribute("data-theme", this.isDarkMode ? "dark" : "light")
         this.isDarkMode = value;
       },
     })

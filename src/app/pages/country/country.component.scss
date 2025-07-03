@@ -18,19 +18,25 @@
         display: flex;
         align-items: center;
         width: fit-content;
-        background-color: transparent;
+        background-color: var(--element-bg);
+        box-shadow:var(--shadow);
+        padding: 10px 32px;
+        border-radius: 6px;
+        cursor: pointer;
         border: none;
         gap: 0.625rem;
-
+        color: var(--text-color);
         svg {
             height: 1.25rem;
         }
+
     }
 
     .country-info {
         display: flex;
         flex-direction: row;
         gap: 7.5rem;
+        color: var(--text-color);
 
         @include mobile {
             flex-direction: column;
@@ -41,6 +47,7 @@
         img {
             width: 50%;
             height: 25.063rem;
+            border-radius: 6px;
 
             @include mobile {
                 width: 100%;
@@ -108,11 +115,13 @@
                     flex-wrap: wrap;
 
                     li {
-                        border: 1px solid #979797;
+                        background-color: var(--element-bg);
+                        box-sizing: var(--text-color);
                         border-radius: 2px;
+                         padding: 0.313rem 1.688rem;
 
                         a {
-                            color: black;
+                          color: var(--text-color);
                             text-decoration: none;
                             padding: 0.313rem 1.688rem;
                         }

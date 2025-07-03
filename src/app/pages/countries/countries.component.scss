@@ -1,7 +1,6 @@
 @use "query" as *;
 
 .countries-wrapper {
-    background-color: #FAFAFA;
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -27,6 +26,7 @@
             outline: none;
             overflow: hidden;
             width: 30rem;
+            box-shadow: var(--shadow);
 
             @include mobile {
                 width: 83.5%;
@@ -34,8 +34,9 @@
 
             display: flex;
             align-items: center;
-            background-color: white;
+            background-color: var(--element-bg);
             padding: 1.188rem 2rem;
+            color: var(--text-color);
             gap: 1.5rem;
 
             svg {
@@ -46,6 +47,7 @@
                 border: none;
                 outline: none;
                 flex: 1;
+                color: var(--text-color);
                 background-color: transparent;
             }
         }
@@ -54,6 +56,8 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            background-color: (--bg-color);
+            box-shadow: var(--shadow);
 
 
             button {
@@ -83,10 +87,11 @@
 
         .country-card {
             overflow: hidden;
-            background-color: white;
+            background-color: var(--element-bg);
             text-decoration: none;
             border-radius: 0.313rem;
             overflow: hidden;
+            box-shadow: var(--shadow);
 
             img {
                 height: 10rem;
@@ -101,7 +106,7 @@
                 padding-bottom: 3rem;
                 display: flex;
                 flex-direction: column;
-                color: #111517;
+                color: var(--text-color);
                 gap: 1rem;
 
                 .name {

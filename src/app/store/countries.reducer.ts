@@ -7,7 +7,8 @@ export const initialState: CountriesState = {
     searchQuery: "",
     loading: false,
     error: null,
-    country:null
+    country: null,
+    isDark: false
 };
 
 
@@ -43,6 +44,12 @@ export const countriesReducer = createReducer(
         ...state,
         loading: false,
         country
+    })),
+
+    on(CountryActions.toggleTheme, (state, { theme }) => ({
+        ...state,
+        loading: false,
+        isDark: theme
     }))
 
 )

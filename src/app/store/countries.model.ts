@@ -6,4 +6,5 @@ export interface CountriesState {
     searchQuery:string;
     error: any;
     country:CountryInfo|null;
+    isDark:boolean;
 }

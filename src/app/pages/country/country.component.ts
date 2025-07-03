@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CountryInfo } from '../../../model/country';
 import { Subscription } from 'rxjs';
 import { CountryService } from '../../services/countries.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-country',
@@ -13,12 +14,16 @@ export class CountryComponent {
   country: CountryInfo | null = null;
   subscription: Subscription = new Subscription()
 
-  constructor(private countriesService: CountryService) {
+  constructor(private countriesService: CountryService,private location: Location) {
     this.subscription.add(this.countriesService.country$.subscribe({
       next: (value) => {
         this.country = value;
       },
     }))
+  }
+
+  goBack(){
+   this.location.back();
   }
 
   get languages() {

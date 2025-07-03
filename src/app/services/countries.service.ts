@@ -11,16 +11,30 @@ import * as CountryAction from "./../store/countries.actions"
 export class CountryService {
 
   countries$: Observable<Country[]>;
-  country$:Observable<CountryInfo|null>;
+  country$: Observable<CountryInfo | null>;
+  isDarkMode$: Observable<Boolean>;
+
+  regions = [
+    "Africa",
+    "America",
+    "Asia",
+    "Europe",
+    "Oceania"
+  ]
 
   constructor(private store: Store) {
     this.store.dispatch(CountriesAction.loadCountries());
     this.countries$ = this.store.select(CountriesSelector.selectCountries)
     this.country$ = this.store.select(CountriesSelector.selectSearchCountry)
+    this.isDarkMode$ = this.store.select(CountriesSelector.selectTheme)
   }
 
   searchCountry(name: string) {
     this.store.dispatch(CountryAction.searchCountries({ query: name }))
+  }
+
+  toggleTheme(theme: boolean) {
+    this.store.dispatch(CountriesAction.toggleTheme({ theme }))
   }
 
 

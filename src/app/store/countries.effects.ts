@@ -37,10 +37,29 @@ export class CountriesEffects {
                 ofType(CountriesAction.searchCountries),
                 withLatestFrom(this.store.select(CountrySelector.selectSearchQuery)),
                 switchMap(([action, query]) =>
-                    this.countryService.searchCountries(query).pipe(
-                        map((countryinfo) =>
-                            CountriesAction.searchCountriesSuccess({ country: countryinfo[0] })
-                        ),
+                    this.countryService.getCountry(query).pipe(
+                        switchMap((countryinfo) => {
+                            const country = countryinfo[0];
+                            const borderCodes = country.borders || [];
+
+                            if (borderCodes.length === 0) {
+                                return of(
+                                    CountriesAction.searchCountriesSuccess({ country: { ...country, full_borders: [] } })
+                                );
+                            }
+
+                            return this.countryService.getCountriesByCodes(borderCodes).pipe(
+                                map((borderCountries) =>
+                                    CountriesAction.searchCountriesSuccess({
+                                        country: {
+                                            ...country,
+                                            full_borders: borderCountries
+                                        }
+                                    })
+                                )
+                            );
+                            
+                        }),
                         catchError((error) =>
                             of(CountriesAction.loadCountriesFailure({ error }))
                         )

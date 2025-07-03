@@ -1,26 +1,10 @@
 export interface Country {
-    flags: {
-        png: string;
-        svg: string;
-        alt: string;
-    };
-    name: {
-        common: string;
-        official: string;
-        nativeName: {
-            [languageCode: string]: {
-                official: string;
-                common: string;
-            };
-        };
-    };
-    capital: string[];
-    region: string;
-    population: number;
-}
-
-
-export interface CountryInfo{
+  flags: {
+    png: string;
+    svg: string;
+    alt: string;
+  };
+  cca3: string;
   name: {
     common: string;
     official: string;
@@ -31,6 +15,24 @@ export interface CountryInfo{
       };
     };
   };
+  capital: string[];
+  region: string;
+  population: number;
+}
+
+
+export interface CountryInfo {
+  name: {
+    common: string;
+    official: string;
+    nativeName: {
+      [languageCode: string]: {
+        official: string;
+        common: string;
+      };
+    };
+  };
+  full_borders?: Country[]
   tld: string[];
   independent: boolean;
   status: string;

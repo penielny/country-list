@@ -1,0 +1,10 @@
+<div class="countries-wrapper">
+    @for (country of countries; track $index) {
+    <a (click)="setSearchTerm(country.name.common)" [routerLink]="'/country/' + country.name.common">
+        <img [src]="country.flags.png" />
+        <p>{{country.name.common}}</p>
+        <p>{{country.capital}}</p>
+        <p>{{country.population}}</p>
+    </a>
+    }
+</div>

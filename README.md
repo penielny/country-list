@@ -1,59 +1,110 @@
-# CountryList
+# 🌍 CountryList
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.14.
+**CountryList** is a modern **Angular** application that allows users to browse, search, and filter countries using data from the [REST Countries API](https://restcountries.com). The app features a responsive UI, dark/light theme switching, and robust state management using **NgRx**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Setup & Run Instructions
 
+### 1. Install dependencies
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### 2. Start the development server
 ```bash
-ng generate component component-name
+npm serve
 ```
+Visit http://localhost:4200 in your browser.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
+### 3. Build for production
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## ✨ Application Features
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- 🔍 **Country Search** – Search for countries by name.
+- 🌐 **Region Filter** – Filter countries by region.
+- 🌓 **Theme Switch** – Toggle between dark and light modes.
+- 📄 **Country Details** – View detailed information about a selected country.
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 🧩 Component Structure
 
-For end-to-end (e2e) testing, run:
+- `NavbarComponent` – Displays the app title and theme switcher.
+- `CountriesComponent` – Lists all countries with search and filter controls.
+- `CountryComponent` – Shows detailed information about a selected country.
+- **Shared Components** – Reusable UI elements such as loaders, cards, etc.
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🧭 Routing Overview
 
-## Additional Resources
+| Route             | Description                              |
+|------------------|------------------------------------------|
+| `/`              | Displays the list of countries            |
+| `/country/:code` | Shows details for a specific country      |
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Routing is configured in `app.routes.ts` using **Angular Router**.
+
+---
+
+## 🌐 API Consumption
+
+The app uses the **REST Countries API** to fetch data. All HTTP requests are handled by Angular services:
+
+- `countries.service.ts`
+- `country-http.service.ts`
+
+> Caching is implemented for performance efficiency.
+
+---
+
+## 🛠️ NgRx Store Implementation
+
+- **State** – Manages the countries list, selected country, filters, and theme.
+- **Actions** – Define events such as loading countries or toggling the theme.
+- **Reducers** – Update state in response to actions.
+- **Effects** – Handle API calls and side effects.
+
+> NgRx files are located in the `store/` directory.
+
+---
+
+## 🎨 Theme Switching
+
+The theme (dark or light) is:
+
+- Controlled via **NgRx state**.
+- Toggled from the `NavbarComponent`.
+- Applied globally using Angular theming.
+- Persisted across sessions via state management.
+
+---
+
+## 🔁 Git Workflow
+
+- **`main` branch** – Stable, production-ready code.
+- **Feature branches** – New features or fixes are developed in isolated branches (e.g. `feature/search`, `fix/navbar-style`).
+- **Pull requests** – Used for code reviews and merging into `main`.
+
+---
+
+## 🧪 Tech Stack
+
+- Angular
+- TypeScript
+- NgRx
+- RxJS
+- SCSS
+- REST API
+
+---
+
+## 📄 License
+
+MIT – feel free to use and modify.
